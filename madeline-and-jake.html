@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madeline & Jake — May 1, 2027</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf7f2;
+      --charcoal: #1a1a1a;
+      --coral: #ff5f3f;
+      --yellow: #f7d94c;
+      --teal: #2ec4b6;
+      --pink: #ff85a1;
+      --violet: #7c5cbf;
+      --green: #4caf82;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.2rem 2rem;
+      background: var(--cream);
+      border-bottom: 1.5px solid var(--charcoal);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    nav a {
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--coral); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .confetti-strip {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 10px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--coral) 0px, var(--coral) 60px,
+        var(--yellow) 60px, var(--yellow) 120px,
+        var(--teal) 120px, var(--teal) 180px,
+        var(--pink) 180px, var(--pink) 240px,
+        var(--violet) 240px, var(--violet) 300px,
+        var(--green) 300px, var(--green) 360px
+      );
+    }
+
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+      animation: float 8s ease-in-out infinite;
+    }
+    .s1 { width: 320px; height: 320px; background: var(--coral); top: 10%; left: -80px; animation-delay: 0s; }
+    .s2 { width: 200px; height: 200px; background: var(--yellow); top: 60%; right: -40px; animation-delay: 2s; }
+    .s3 { width: 150px; height: 150px; background: var(--teal); bottom: 10%; left: 20%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-24px); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-names {
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 300;
+      line-height: 0.9;
+      text-align: center;
+      letter-spacing: -0.02em;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+
+    .hero-names .ampersand {
+      color: var(--coral);
+      font-style: italic;
+      display: block;
+      font-size: 0.6em;
+    }
+
+    .hero-date {
+      margin-top: 2.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--charcoal);
+      padding: 0.7rem 2rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-location {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #555;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+
+    .dress-code-badge {
+      margin-top: 3rem;
+      background: var(--yellow);
+      border: 1.5px solid var(--charcoal);
+      padding: 0.9rem 1.8rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      max-width: 380px;
+      animation: fadeUp 0.8s 0.6s ease both;
+    }
+
+    .dress-code-badge strong { display: block; font-size: 0.85rem; margin-bottom: 0.2rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 2.5rem;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1.5px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--coral) 0, var(--coral) 30px,
+        transparent 30px, transparent 40px,
+        var(--teal) 40px, var(--teal) 70px,
+        transparent 70px, transparent 80px,
+        var(--yellow) 80px, var(--yellow) 110px,
+        transparent 110px, transparent 120px
+      );
+      margin: 4rem 0;
+    }
+
+    /* ── SCHEDULE ── */
+    .schedule-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .event-block {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid #ddd;
+      align-items: start;
+    }
+    .event-block:first-child { border-top: 1px solid #ddd; }
+
+    .event-time {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      padding-top: 0.3rem;
+    }
+
+    .event-dot {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .event-name {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+
+    .event-details {
+      font-size: 1rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    .event-day-header {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 0.6rem 1rem;
+      margin-bottom: 0;
+    }
+
+    /* ── RSVP ── */
+    #rsvp { background: var(--cream); }
+
+    .rsvp-box {
+      border: 1.5px solid var(--charcoal);
+      padding: 3rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    input, select, textarea {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      padding: 0.7rem 0.9rem;
+      background: var(--cream);
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--coral);
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--coral);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 1rem;
+    }
+    .btn:hover { background: #e04a2e; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .rsvp-deadline {
+      margin-top: 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: #888;
+    }
+
+    .success-msg {
+      display: none;
+      background: var(--green);
+      color: white;
+      padding: 1rem 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      margin-top: 1rem;
+    }
+
+    /* ── TRAVEL ── */
+    .hotel-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .hotel-card {
+      border: 1.5px solid var(--charcoal);
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hotel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+    }
+
+    .hotel-card:nth-child(1)::before { background: var(--coral); }
+    .hotel-card:nth-child(2)::before { background: var(--teal); }
+    .hotel-card:nth-child(3)::before { background: var(--yellow); }
+
+    .hotel-name {
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .hotel-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 0.8rem;
+    }
+
+    .hotel-desc {
+      font-size: 0.95rem;
+      color: #555;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .travel-note {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: var(--yellow);
+      border: 1.5px solid var(--charcoal);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .travel-note strong {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1.5px solid var(--charcoal);
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .footer-names {
+      font-size: 2rem;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .color-bar {
+      height: 8px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--coral) 0, var(--coral) 50px,
+        var(--yellow) 50px, var(--yellow) 100px,
+        var(--teal) 100px, var(--teal) 150px,
+        var(--pink) 150px, var(--pink) 200px,
+        var(--violet) 200px, var(--violet) 250px,
+        var(--green) 250px, var(--green) 300px
+      );
+      margin-top: 2rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { gap: 1.2rem; font-size: 0.65rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .event-block { grid-template-columns: 1fr; gap: 0.3rem; }
+      .rsvp-box { padding: 1.8rem; }
+    }
+
+    /* ── TOGGLE BUTTONS ── */
+    .toggle-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .toggle-btn {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      border: 1.5px solid #ccc;
+      padding: 0.6rem 1rem;
+      background: var(--cream);
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--coral);
+      background: #fff5f3;
+    }
+
+    .toggle-btn.selected {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-color: var(--charcoal);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#schedule">Schedule</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#travel">Travel</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="confetti-strip"></div>
+    <div class="floating-shape s1"></div>
+    <div class="floating-shape s2"></div>
+    <div class="floating-shape s3"></div>
+
+    <p class="hero-eyebrow">We're getting married</p>
+    <h1 class="hero-names">
+      Madeline<span class="ampersand">&amp;</span>Jake
+    </h1>
+    <div class="hero-date">Saturday, May 1, 2027 · Austin, Texas</div>
+    <p class="hero-location">Lady Bird Johnson Wildflower Center</p>
+
+    <div class="dress-code-badge">
+      <strong>🌈 Dress Code: Bright &amp; Bold</strong>
+      We're celebrating in color — wear your most vibrant outfit and favorite patterns!
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <div class="divider"></div>
+  <section id="schedule">
+    <p class="section-label">When &amp; Where</p>
+    <h2 class="section-title">The Weekend</h2>
+
+    <div class="schedule-grid">
+
+      <div class="event-day-header">Friday, April 30th — Welcome Party</div>
+
+      <div class="event-block">
+        <div class="event-time">
+          <span class="event-dot" style="background:var(--teal)"></span>8:00 – 10:00 PM
+        </div>
+        <div>
+          <div class="event-name">Welcome Party</div>
+          <div class="event-details">La Mancha Tex Mex Tavern · Austin, TX<br>Come kick off the weekend with us — drinks, queso, good vibes.</div>
+        </div>
+      </div>
+
+      <div class="event-day-header" style="margin-top:2rem;">Saturday, May 1st — Wedding Day</div>
+
+      <div class="event-block">
+        <div class="event-time">
+          <span class="event-dot" style="background:var(--yellow)"></span>5:30 PM
+        </div>
+        <div>
+          <div class="event-name">Guests Arrive</div>
+          <div class="event-details">Lady Bird Johnson Wildflower Center<br>4801 La Crosse Ave, Austin, TX 78739</div>
+        </div>
+      </div>
+
+      <div class="event-block">
+        <div class="event-time">
+          <span class="event-dot" style="background:var(--coral)"></span>6:00 PM
+        </div>
+        <div>
+          <div class="event-name">Ceremony</div>
+          <div class="event-details">Please be seated before 6:00 PM — we'll start promptly.</div>
+        </div>
+      </div>
+
+      <div class="event-block">
+        <div class="event-time">
+          <span class="event-dot" style="background:var(--pink)"></span>Following Ceremony
+        </div>
+        <div>
+          <div class="event-name">Cocktail Hour &amp; Reception</div>
+          <div class="event-details">Dinner, dancing, and celebrating all night long.</div>
+        </div>
+      </div>
+
+      <div class="event-block">
+        <div class="event-time">
+          <span class="event-dot" style="background:var(--violet)"></span>11:00 PM
+        </div>
+        <div>
+          <div class="event-name">Send-Off</div>
+          <div class="event-details">Reception ends — we can't wait to celebrate with you!</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <div class="divider"></div>
+  <section id="rsvp">
+    <p class="section-label">Join Us</p>
+    <h2 class="section-title">RSVP</h2>
+
+    <div class="rsvp-box">
+      <form id="rsvp-form" onsubmit="handleRSVP(event)" autocomplete="off">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first">First Name</label>
+            <input type="text" id="first" placeholder="Madeline" required />
+          </div>
+          <div class="form-group">
+            <label for="last">Last Name</label>
+            <input type="text" id="last" placeholder="Smith" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests">
+              <option value="1">1 — Just me</option>
+              <option value="2">2 — Me + 1</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Attending the Welcome Party? (Fri, Apr 30)</label>
+            <div class="toggle-group">
+              <button type="button" class="toggle-btn" data-group="welcome" data-value="yes" onclick="selectToggle(this)">✅ Yes</button>
+              <button type="button" class="toggle-btn" data-group="welcome" data-value="no" onclick="selectToggle(this)">❌ No</button>
+            </div>
+            <input type="hidden" id="welcome" value="" />
+          </div>
+          <div class="form-group">
+            <label>Attending the Wedding? (Sat, May 1)</label>
+            <div class="toggle-group">
+              <button type="button" class="toggle-btn" data-group="wedding" data-value="yes" onclick="selectToggle(this)">✅ Yes</button>
+              <button type="button" class="toggle-btn" data-group="wedding" data-value="no" onclick="selectToggle(this)">❌ No</button>
+            </div>
+            <input type="hidden" id="wedding" value="" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full">
+            <label>Dietary Restrictions or Notes</label>
+            <textarea id="notes" placeholder="Vegetarian, nut allergy, anything else we should know..."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn">Send RSVP</button>
+        <div class="rsvp-deadline">Please RSVP by February 1, 2027</div>
+        <div class="rsvp-deadline" style="margin-top:0.5rem;">Having trouble? Email us at <a href="mailto:madeline.g14@gmail.com" style="color:var(--coral);">madeline.g14@gmail.com</a></div>
+      </form>
+      <div class="success-msg" id="success-msg">
+        🎉 Thank you! Your RSVP has been received. We can't wait to celebrate with you!
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL -->
+  <div class="divider"></div>
+  <section id="travel">
+    <p class="section-label">Getting Here</p>
+    <h2 class="section-title">Travel &amp; Stay</h2>
+
+    <p style="font-size:1.1rem; color:#555; font-style:italic; margin-bottom:2rem; line-height:1.6;">
+      Austin-Bergstrom International Airport (AUS) is the closest airport, about 25 minutes from the venue. Room blocks are coming soon — check back here for hotel details and group rates!
+    </p>
+
+    <div class="hotel-cards">
+      <div class="hotel-card">
+        <div class="hotel-name">Room Block</div>
+        <div class="hotel-meta">Details Coming Soon</div>
+        <div class="hotel-desc">We're securing a room block at a nearby hotel. We'll update this page as soon as it's confirmed.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-name">South Austin Hotels</div>
+        <div class="hotel-meta">Near the Wildflower Center</div>
+        <div class="hotel-desc">The venue is in South Austin. Look for hotels along South Congress or near Slaughter Lane for easy access.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-name">Downtown Austin</div>
+        <div class="hotel-meta">~20 min from venue</div>
+        <div class="hotel-desc">Plenty of hotel and Airbnb options downtown if you want to be in the heart of Austin before and after the wedding weekend.</div>
+      </div>
+    </div>
+
+    <div class="travel-note">
+      <strong>✈️ Flying In?</strong>
+      Austin-Bergstrom International Airport (AUS) is your best bet. Rideshares like Uber and Lyft are widely available throughout the city. We recommend booking accommodation early — Austin fills up fast on spring weekends!
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-names">Madeline &amp; Jake</div>
+    <div class="footer-date">May 1, 2027 · Austin, Texas</div>
+    <div class="color-bar"></div>
+  </footer>
+
+  <script>
+
+    function selectToggle(btn) {
+      const group = btn.getAttribute('data-group');
+      const value = btn.getAttribute('data-value');
+      // Deselect all in group
+      document.querySelectorAll(`.toggle-btn[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+      // Select clicked
+      btn.classList.add('selected');
+      // Set hidden input
+      document.getElementById(group).value = value;
+    }
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
