@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madeline and Jake - May 1, 2027</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:#faf7f2;--charcoal:#1a1a1a;--coral:#ff5f3f;
+      --yellow:#f7d94c;--teal:#2ec4b6;--pink:#ff85a1;
+      --violet:#7c5cbf;--green:#4caf82;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Cormorant Garamond',serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden;transition:filter .5s ease}
+    body.grayscale{filter:grayscale(1)}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:center;gap:2rem;padding:1.2rem 2rem;background:var(--cream);border-bottom:1.5px solid var(--charcoal);font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;flex-wrap:wrap}
+    nav a{color:var(--charcoal);text-decoration:none;transition:color .2s}
+    nav a:hover{color:var(--coral)}
+    #admin-nav-link{display:none;color:var(--coral)}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem 2rem 6rem;position:relative;overflow:hidden}
+    .confetti-strip{position:absolute;top:0;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,var(--coral) 0,var(--coral) 60px,var(--yellow) 60px,var(--yellow) 120px,var(--teal) 120px,var(--teal) 180px,var(--pink) 180px,var(--pink) 240px,var(--violet) 240px,var(--violet) 300px,var(--green) 300px,var(--green) 360px)}
+    .fs{position:absolute;border-radius:50%;opacity:.12;animation:float 8s ease-in-out infinite}
+    .s1{width:320px;height:320px;background:var(--coral);top:10%;left:2%;animation-delay:0s}
+    .s2{width:200px;height:200px;background:var(--yellow);top:60%;right:2%;animation-delay:2s}
+    .s3{width:150px;height:150px;background:var(--teal);bottom:10%;left:20%;animation-delay:4s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-24px)}}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:1.5rem;animation:fadeUp .8s ease both}
+    .hero-names{font-size:clamp(4rem,12vw,9rem);font-weight:300;line-height:.9;text-align:center;letter-spacing:-.02em;animation:fadeUp .8s .15s ease both}
+    .hero-names .amp{color:var(--coral);font-style:italic;display:block;font-size:.6em}
+    .hero-date{margin-top:2.5rem;font-family:'DM Mono',monospace;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;border:1.5px solid var(--charcoal);padding:.7rem 2rem;animation:fadeUp .8s .3s ease both}
+    .hero-loc{margin-top:1rem;font-size:1.1rem;font-style:italic;color:#555;animation:fadeUp .8s .45s ease both}
+    .dc-badge{margin-top:3rem;background:var(--yellow);border:1.5px solid var(--charcoal);padding:.9rem 1.8rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-align:center;max-width:380px;animation:fadeUp .8s .6s ease both}
+    .dc-badge strong{display:block;font-size:.85rem;margin-bottom:.2rem}
+
+    /* scroll indicator */
+    .scroll-indicator{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;animation:fadeUp .8s .9s ease both;cursor:pointer;opacity:.75;transition:opacity .2s}
+    .scroll-indicator:hover{opacity:1}
+    .scroll-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--coral)}
+    .scroll-pip-track{display:flex;flex-direction:column;align-items:center;gap:3px}
+    .scroll-pip{width:5px;height:5px;border-radius:50%;animation:pip-fade 1.4s ease-in-out infinite}
+    .scroll-pip:nth-child(1){background:var(--coral);animation-delay:0s}
+    .scroll-pip:nth-child(2){background:var(--yellow);animation-delay:.18s}
+    .scroll-pip:nth-child(3){background:var(--teal);animation-delay:.36s}
+    @keyframes pip-fade{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(3px)}}
+    @keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(5px)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    section{padding:6rem 2rem;max-width:900px;margin:0 auto}
+    .section-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:.8rem}
+    .section-title{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:300;line-height:1.1;margin-bottom:2.5rem}
+    .divider{width:100%;height:1.5px;background:repeating-linear-gradient(90deg,var(--coral) 0,var(--coral) 30px,transparent 30px,transparent 40px,var(--teal) 40px,var(--teal) 70px,transparent 70px,transparent 80px,var(--yellow) 80px,var(--yellow) 110px,transparent 110px,transparent 120px);margin:4rem 0}
+
+    /* SCHEDULE */
+    .sched-grid{display:grid;gap:0}
+    .ev-block{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid #ddd;align-items:start}
+    .ev-block:first-child{border-top:1px solid #ddd}
+    .ev-time{font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.08em;padding-top:.3rem}
+    .ev-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.4rem;vertical-align:middle}
+    .ev-name{font-size:1.4rem;font-weight:400;margin-bottom:.3rem}
+    .ev-det{font-size:1rem;color:#666;font-style:italic;line-height:1.6}
+    .ev-day{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;background:var(--charcoal);color:var(--cream);padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+    .ev-day.ev-day-optional{background:#888}
+    .ev-day-cal{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.75);padding:.25rem .55rem;cursor:pointer;transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:.3rem;text-decoration:none;position:relative}
+    .ev-day-cal:hover{border-color:var(--coral);color:var(--coral);background:transparent}
+    .cal-dropdown{position:absolute;top:100%;right:0;margin-top:.3rem;background:var(--cream);border:1.5px solid var(--charcoal);z-index:50;min-width:180px;box-shadow:3px 3px 0 var(--charcoal);display:none}
+    .cal-dropdown.open{display:block}
+    .cal-dropdown a{display:block;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1rem;color:var(--charcoal);text-decoration:none;border-bottom:1px solid #eee;transition:all .15s}
+    .cal-dropdown a:last-child{border-bottom:none}
+    .cal-dropdown a:hover{background:var(--charcoal);color:var(--cream)}
+    .ev-links{display:flex;gap:.6rem;margin-top:.7rem;flex-wrap:wrap}
+    .ev-link{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid #ddd;color:#888;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.3rem}
+    .ev-link:hover{border-color:var(--coral);color:var(--coral)}
+
+    /* ADD TO CALENDAR */
+    .cal-section{margin-top:3rem;padding:1.5rem;background:#f5f0e8;border:1.5px solid #e0d8cc}
+    .cal-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#888;margin-bottom:.8rem}
+    .cal-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+    .cal-btn{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.2rem;border:1.5px solid var(--charcoal);background:transparent;color:var(--charcoal);cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+    .cal-btn:hover{background:var(--charcoal);color:var(--cream)}
+
+    /* RSVP */
+    .rsvp-box{border:1.5px solid var(--charcoal);padding:3rem}
+    .rsvp-step{display:none}
+    .rsvp-step.active{display:block;animation:fadeUp .3s ease}
+    .form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+    label{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase}
+    input,select,textarea{font-family:'Cormorant Garamond',serif;font-size:1rem;border:1px solid #ccc;padding:.7rem .9rem;background:var(--cream);color:var(--charcoal);outline:none;transition:border-color .2s;width:100%}
+    input:focus,select:focus,textarea:focus{border-color:var(--coral)}
+    textarea{resize:vertical;min-height:80px}
+    .btn{font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;background:var(--coral);color:white;border:none;padding:1rem 2.5rem;cursor:pointer;transition:background .2s,transform .1s}
+    .btn:hover{background:#e04a2e;transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
+    .btn-ghost{background:transparent;color:var(--charcoal);border:1.5px solid var(--charcoal)}
+    .btn-ghost:hover{background:var(--charcoal);color:var(--cream)}
+    .btn-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
+    .alert{padding:.9rem 1.2rem;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.06em;margin-bottom:1.2rem}
+    .alert-error{background:#ffeaea;border:1px solid var(--coral);color:#c0392b}
+    .alert-info{background:#fffbea;border:1px solid var(--yellow);color:#7a6000}
+    .inv-card{background:var(--yellow);border:1.5px solid var(--charcoal);padding:1.5rem;margin-bottom:2rem}
+    .inv-card strong{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.4rem}
+    .inv-names{font-size:1.5rem;font-weight:400;line-height:1.3}
+    .editing-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:white;padding:.2rem .7rem;border-radius:2px;margin-top:.5rem}
+    .person-block{border:1.5px solid #ddd;margin-bottom:1rem;overflow:hidden}
+    .person-header{background:var(--charcoal);color:var(--cream);padding:.7rem 1.2rem;font-size:1.1rem}
+    .person-body{padding:1.2rem 1.5rem}
+    .person-events{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .event-toggle{border:1.5px solid #ddd;padding:1rem;cursor:pointer;text-align:center;transition:all .15s;user-select:none}
+    .event-toggle:hover{border-color:var(--coral)}
+    .event-toggle.selected-yes{background:var(--green);border-color:var(--green);color:white}
+    .event-toggle.selected-no{background:#eee;border-color:#ccc;color:#999}
+    .event-toggle .ev-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.3rem;opacity:.7}
+    .event-toggle .ev-answer{font-size:1.1rem;font-weight:400}
+    .plus-one-box{border:1.5px dashed var(--teal);padding:1.5rem;margin-bottom:1rem;background:rgba(46,196,182,.04)}
+    .plus-one-box .pob-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem}
+    .rsvp-deadline{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#888;margin-top:1.5rem}
+    .success-banner{padding:2rem;font-family:'DM Mono',monospace;font-size:.82rem;letter-spacing:.08em;line-height:1.8}
+    .success-banner-yes{background:var(--green);color:white}
+    .success-banner-no{background:#f0ebe3;color:var(--charcoal);border:1.5px solid #ddd}
+    .spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* REGISTRY */
+    .registry-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1.5rem}
+    .registry-card{border:1.5px solid var(--charcoal);padding:2rem;text-align:center;text-decoration:none;color:var(--charcoal);transition:all .2s;display:block;position:relative;overflow:hidden}
+    .registry-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px}
+    .registry-card:nth-child(1)::before{background:var(--coral)}
+    .registry-card:nth-child(2)::before{background:var(--teal)}
+    .registry-card:nth-child(3)::before{background:var(--yellow)}
+    .registry-card:hover{background:var(--charcoal);color:var(--cream)}
+    .registry-card-name{font-size:1.3rem;margin-bottom:.3rem}
+    .registry-card-desc{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;color:#888;text-transform:uppercase}
+    .registry-card:hover .registry-card-desc{color:#aaa}
+    .registry-placeholder-note{font-size:1rem;color:#888;font-style:italic;margin-bottom:2rem;line-height:1.6}
+
+    /* FAQ */
+    .faq-item{border-bottom:1px solid #ddd;padding:1.5rem 0}
+    .faq-item:first-child{border-top:1px solid #ddd}
+    .faq-q{font-size:1.2rem;font-weight:400;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .faq-q:hover{color:var(--coral)}
+    .faq-icon{font-family:'DM Mono',monospace;font-size:.9rem;color:var(--coral);flex-shrink:0;transition:transform .2s}
+    .faq-a{font-size:1rem;color:#555;font-style:italic;line-height:1.7;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease}
+    .faq-item.open .faq-a{max-height:200px;padding-top:.8rem}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-placeholder{font-size:1rem;color:#aaa;font-style:italic;border:1.5px dashed #ddd;padding:2rem;text-align:center;line-height:1.7}
+
+    /* TRAVEL */
+    .hotel-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem}
+    .hotel-card{border:1.5px solid var(--charcoal);padding:1.8rem;position:relative;overflow:hidden}
+    .hotel-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px}
+    .hotel-card:nth-child(1)::before{background:var(--coral)}
+    .hotel-card:nth-child(2)::before{background:var(--teal)}
+    .hotel-card:nth-child(3)::before{background:var(--yellow)}
+    .hotel-name{font-size:1.3rem;margin-bottom:.3rem}
+    .hotel-meta{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:#888;margin-bottom:.8rem}
+    .hotel-desc{font-size:.95rem;color:#555;font-style:italic;line-height:1.5}
+    .travel-note{margin-top:2.5rem;padding:1.5rem;background:var(--yellow);border:1.5px solid var(--charcoal);font-size:1rem;line-height:1.6}
+    .travel-note strong{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.4rem}
+
+    /* ADMIN */
+    #admin{display:none;background:var(--charcoal);color:var(--cream);padding:6rem 2rem}
+    #admin .inner{max-width:960px;margin:0 auto}
+    #admin .section-label{color:var(--yellow)}
+    #admin .section-title{color:var(--cream)}
+    .script-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem}
+    .admin-input{font-family:'DM Mono',monospace;font-size:.75rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.2);color:var(--cream);padding:.7rem 1rem;outline:none;flex:1;min-width:260px}
+    .admin-input:focus{border-color:var(--yellow)}
+    .admin-input::placeholder{color:rgba(255,255,255,.25)}
+    .btn-outline{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--cream);border:1.5px solid rgba(255,255,255,.25);padding:.7rem 1.5rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-outline:hover{border-color:var(--yellow);color:var(--yellow)}
+    .btn-outline.active{background:var(--yellow);color:var(--charcoal);border-color:var(--yellow)}
+    .sync-status{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:rgba(255,255,255,.4);min-height:1.2em;margin-bottom:1.5rem}
+    .upload-zone{border:2px dashed rgba(255,255,255,.2);padding:2.5rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;margin-bottom:1rem}
+    .upload-zone:hover{border-color:var(--yellow);background:rgba(247,217,76,.05)}
+    .upload-zone-icon{font-size:2rem;margin-bottom:.5rem}
+    .upload-zone-text{font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.5)}
+    .upload-zone-text strong{color:var(--yellow);display:block;margin-bottom:.3rem}
+    .csv-hint{font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:.07em;color:rgba(255,255,255,.3);margin-bottom:2rem;line-height:1.9}
+    .csv-hint code{background:rgba(255,255,255,.08);padding:.1rem .4rem;border-radius:2px;color:var(--yellow)}
+    .admin-stats{display:none;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin-bottom:2.5rem}
+    .stat-box{border:1px solid rgba(255,255,255,.1);padding:1.2rem 1.5rem}
+    .stat-num{font-size:2.4rem;font-weight:300;line-height:1}
+    .stat-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.3rem}
+    #admin-controls{display:none}
+    .admin-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.5rem}
+    .search-bar{font-family:'DM Mono',monospace;font-size:.78rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);color:var(--cream);padding:.7rem 1rem;letter-spacing:.05em;width:100%;max-width:320px;outline:none;margin-bottom:1.5rem}
+    .search-bar::placeholder{color:rgba(255,255,255,.25)}
+    .search-bar:focus{border-color:var(--yellow)}
+    .gtw{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:.88rem}
+    th{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.7rem 1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4)}
+    td{padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:middle}
+    tr.inv-row td{background:rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:.4rem 1rem}
+    .badge{display:inline-block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:.2rem .55rem;border-radius:2px;text-transform:uppercase;white-space:nowrap}
+    .b-yes{background:rgba(76,175,130,.2);color:var(--green)}
+    .b-no{background:rgba(255,255,255,.07);color:rgba(255,255,255,.35)}
+    .b-pend{background:rgba(247,217,76,.15);color:var(--yellow)}
+    .b-dec{background:rgba(255,95,63,.15);color:var(--coral)}
+
+    /* FOOTER */
+    footer{border-top:1.5px solid var(--charcoal);text-align:center;padding:3rem 2rem}
+    .footer-names{font-size:2rem;font-weight:300;font-style:italic;margin-bottom:.5rem}
+    .footer-date{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:#888}
+    .fun-btn{margin-top:1.5rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:1.5px solid #ccc;color:#aaa;padding:.6rem 1.4rem;cursor:pointer;transition:all .2s}
+    .fun-btn:hover{border-color:var(--coral);color:var(--coral)}
+    .color-bar{height:8px;background:repeating-linear-gradient(90deg,var(--coral) 0,var(--coral) 50px,var(--yellow) 50px,var(--yellow) 100px,var(--teal) 100px,var(--teal) 150px,var(--pink) 150px,var(--pink) 200px,var(--violet) 200px,var(--violet) 250px,var(--green) 250px,var(--green) 300px);margin-top:2rem}
+
+    /* PONG MODAL */
+    #pong-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999;align-items:center;justify-content:center}
+    .pong-inner{background:var(--charcoal);border:1.5px solid #333;padding:2rem;max-width:560px;width:95%;position:relative}
+    .pong-close{position:absolute;top:1rem;right:1rem;background:transparent;border:none;color:#666;font-size:1.2rem;cursor:pointer;line-height:1;transition:color .2s}
+    .pong-close:hover{color:var(--coral)}
+
+    @media(max-width:620px){
+      nav{gap:1rem;font-size:.65rem}
+      .ev-block{grid-template-columns:1fr;gap:.3rem}
+      .rsvp-box{padding:1.5rem}
+      .person-events{grid-template-columns:1fr}
+      .admin-stats{grid-template-columns:1fr 1fr}
+      .btn-row{flex-direction:column}
+      .cal-btns{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#schedule">Schedule</a>
+  <a href="#rsvp">RSVP</a>
+  <a href="#travel">Travel</a>
+  <a href="#faq">FAQ</a>
+  <a href="#registry">Registry</a>
+  <a href="#admin" id="admin-nav-link">Admin ↗</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="confetti-strip"></div>
+  <div class="fs s1"></div><div class="fs s2"></div><div class="fs s3"></div>
+  <p class="hero-eyebrow">We're getting married</p>
+  <h1 class="hero-names">Madeline<span class="amp">&amp;</span>Jake</h1>
+  <div class="hero-date">Saturday, May 1, 2027 · Austin, Texas</div>
+  <p class="hero-loc">Lady Bird Johnson Wildflower Center</p>
+  <div class="dc-badge" id="dc-badge">
+    <strong>Dress Code: Bright &amp; Bold</strong>
+    We're celebrating in color — wear your most vibrant outfit and favorite patterns!
+  </div>
+  <div class="scroll-indicator" onclick="document.getElementById('schedule').scrollIntoView({behavior:'smooth'})">
+    <span class="scroll-label">Scroll</span>
+    <div class="scroll-pip-track">
+      <div class="scroll-pip"></div>
+      <div class="scroll-pip"></div>
+      <div class="scroll-pip"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<div class="divider"></div>
+<section id="schedule">
+  <p class="section-label">When &amp; Where</p>
+  <h2 class="section-title">The Weekend</h2>
+  <div class="sched-grid">
+    <div class="ev-day ev-day-optional"><span>Thursday, April 29th — Two-Stepping Dance Lessons</span><a class="ev-day-cal" href="#" onclick="toggleCalDropdown('cal-drop-dance',this);return false">＋ Add to Calendar<div class="cal-dropdown" id="cal-drop-dance"><a href="#" onclick="addToCalendar('google','dance');closeCalDropdowns();return false">Google Calendar</a><a href="#" onclick="addToCalendar('ical','dance');closeCalDropdowns();return false">Apple / iCal</a></div></a></div>
+    <div class="ev-block">
+      <div class="ev-time"><span class="ev-dot" style="background:var(--green)"></span>7:30–10 PM</div>
+      <div>
+        <div class="ev-name">Two-Stepping and Dance Lessons</div>
+        <div class="ev-det">The Broken Spoke<br>3201 S Lamar Blvd, Austin, TX 78704<br>Dance hall opens at 7:15 PM. Dance lessons 8–9 PM. $10 lessons + cover, cash only. Come warm up your boots before the big day!</div>
+        <div class="ev-links">
+          <a class="ev-link" href="https://maps.google.com/?q=3201+S+Lamar+Blvd,+Austin,+TX+78704" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="ev-day" style="margin-top:2rem"><span>Friday, April 30th — Welcome Party</span><a class="ev-day-cal" href="#" onclick="toggleCalDropdown('cal-drop-welcome',this);return false">＋ Add to Calendar<div class="cal-dropdown" id="cal-drop-welcome"><a href="#" onclick="addToCalendar('google','welcome');closeCalDropdowns();return false">Google Calendar</a><a href="#" onclick="addToCalendar('ical','welcome');closeCalDropdowns();return false">Apple / iCal</a></div></a></div>
+    <div class="ev-block">
+      <div class="ev-time"><span class="ev-dot" style="background:var(--teal)"></span>8-10 PM</div>
+      <div>
+        <div class="ev-name">Welcome Party</div>
+        <div class="ev-det">La Mancha Tex Mex Tavern<br>2203 Hancock Dr, Austin, TX 78756<br>Come kick off the weekend — drinks, churros, happy vibes.</div>
+        <div class="ev-links">
+          <a class="ev-link" href="https://maps.google.com/?q=2203+Hancock+Dr,+Austin,+TX+78756" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="ev-day" style="margin-top:2rem"><span>Saturday, May 1st — Wedding Day</span><a class="ev-day-cal" href="#" onclick="toggleCalDropdown('cal-drop-wedding',this);return false">＋ Add to Calendar<div class="cal-dropdown" id="cal-drop-wedding"><a href="#" onclick="addToCalendar('google','wedding');closeCalDropdowns();return false">Google Calendar</a><a href="#" onclick="addToCalendar('ical','wedding');closeCalDropdowns();return false">Apple / iCal</a></div></a></div>
+    <div class="ev-block">
+      <div class="ev-time"><span class="ev-dot" style="background:var(--yellow)"></span>5:30 PM</div>
+      <div>
+        <div class="ev-name">Guests Arrive</div>
+        <div class="ev-det">Lady Bird Johnson Wildflower Center<br>4801 La Crosse Ave, Austin, TX 78739<br>Find your seat and soak it all in — the ceremony begins promptly at 6:00 PM.</div>
+        <div class="ev-links">
+          <a class="ev-link" href="https://maps.google.com/?q=4801+La+Crosse+Ave,+Austin,+TX+78739" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="ev-block">
+      <div class="ev-time"><span class="ev-dot" style="background:var(--coral)"></span>6:00 PM</div>
+      <div><div class="ev-name">Ceremony</div><div class="ev-det">Please be seated before 6:00 PM — we'll start promptly.</div></div>
+    </div>
+    <div class="ev-block">
+      <div class="ev-time"><span class="ev-dot" style="background:var(--pink)"></span>following ceremony</div>
+      <div><div class="ev-name">Cocktail Hour &amp; Reception</div><div class="ev-det">Dinner, dancing, and celebrating all night long.</div></div>
+    </div>
+    <div class="ev-block">
+      <div class="ev-time"><span class="ev-dot" style="background:var(--violet)"></span>11:00 PM</div>
+      <div><div class="ev-name">Send-Off</div><div class="ev-det">Reception ends — we can't wait to celebrate with you!</div></div>
+    </div>
+    <div class="ev-day ev-day-optional" style="margin-top:2rem"><span>Sunday, May 2nd — Swimming and Sunbathing</span><a class="ev-day-cal" href="#" onclick="toggleCalDropdown('cal-drop-swim',this);return false">＋ Add to Calendar<div class="cal-dropdown" id="cal-drop-swim"><a href="#" onclick="addToCalendar('google','swim');closeCalDropdowns();return false">Google Calendar</a><a href="#" onclick="addToCalendar('ical','swim');closeCalDropdowns();return false">Apple / iCal</a></div></a></div>
+    <div class="ev-block">
+      <div class="ev-time"><span class="ev-dot" style="background:var(--teal)"></span>3–6 PM</div>
+      <div>
+        <div class="ev-name">Swimming and Sunbathing</div>
+        <div class="ev-det">Barton Springs Pool<br>2131 William Barton Dr, Austin, TX 78746<br>A mellow hillside hangout to soak up the sun and the post-wedding glow. Small entrance fee.</div>
+        <div class="ev-links">
+          <a class="ev-link" href="https://maps.google.com/?q=2131+William+Barton+Dr,+Austin,+TX+78746" target="_blank">📍 Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- RSVP -->
+<div class="divider"></div>
+<section id="rsvp">
+  <p class="section-label">Join Us</p>
+  <h2 class="section-title">RSVP</h2>
+  <div class="rsvp-box" id="rsvp-box">
+    <div class="rsvp-step active" id="s-lookup">
+      <div class="form-group">
+        <label for="lookup-input">Your Name</label>
+        <input type="text" id="lookup-input" placeholder="e.g. Jane Smith" autocomplete="off"
+          onkeydown="if(event.key==='Enter')doLookup()" />
+      </div>
+      <div id="lookup-alert"></div>
+      <button class="btn" id="lookup-btn" onclick="doLookup()">Find My Invitation</button>
+      <p class="rsvp-deadline" style="margin-top:1rem">Having trouble? Email us at <a href="mailto:madeline.g14@gmail.com">madeline.g14@gmail.com</a></p>
+    </div>
+
+    <div class="rsvp-step" id="s-form">
+      <div class="inv-card" id="inv-card">
+        <strong>Found your invitation!</strong>
+        <div class="inv-names" id="inv-names"></div>
+        <span class="editing-badge" id="editing-badge" style="display:none">Editing your RSVP</span>
+      </div>
+      <p style="font-size:1rem;color:#555;font-style:italic;margin-bottom:1.5rem">Let us know who's coming to each event — click each tile to toggle attendance.</p>
+      <div id="person-blocks"></div>
+      <div class="plus-one-box" id="plus-one-box" style="display:none">
+        <div class="pob-label">You have an open +1 — are they joining you?</div>
+        <div class="form-group" style="margin-bottom:.8rem">
+          <label>Your guest's name</label>
+          <input type="text" id="plus-one-name-input" placeholder="e.g. Jordan Lee" oninput="onPlusOneNameChange()" />
+        </div>
+        <div id="plus-one-person-block"></div>
+      </div>
+      <div class="form-group" style="margin-top:.5rem">
+        <label>Dietary restrictions or notes <span style="opacity:.5;font-size:.85em">(for the whole group)</span></label>
+        <textarea id="notes-input" placeholder="Vegetarian, nut allergy, high chair needed..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="email-input">Email Address <span style="opacity:.5;font-size:.85em">(so we can reach you if anything changes)</span></label>
+        <input type="email" id="email-input" placeholder="e.g. jane@email.com" />
+      </div>
+      <div id="form-alert"></div>
+      <div class="btn-row">
+        <button class="btn" id="submit-btn" onclick="doSubmit()">Send RSVP</button>
+        <button class="btn btn-ghost" onclick="doReset()">← Back</button>
+      </div>
+      <p class="rsvp-deadline">Please RSVP by February 1, 2027</p>
+    </div>
+
+    <div class="rsvp-step" id="s-success-yes">
+      <div class="success-banner success-banner-yes">
+        Thank you! Your RSVP has been received.<br>
+        We can't wait to celebrate with you in Austin!
+      </div>
+    </div>
+    <div class="rsvp-step" id="s-success-no">
+      <div class="success-banner success-banner-no">
+        We will miss you and hope to celebrate with you another time!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVEL -->
+<div class="divider"></div>
+<section id="travel">
+  <p class="section-label">Getting Here</p>
+  <h2 class="section-title">Travel &amp; Stay</h2>
+  <p style="font-size:1.1rem;color:#555;font-style:italic;margin-bottom:2rem;line-height:1.6">Austin-Bergstrom International Airport (AUS) is about 25 minutes from the venue. Room blocks coming soon!</p>
+  <div class="hotel-cards">
+    <div class="hotel-card"><div class="hotel-name">Room Block</div><div class="hotel-meta">Details Coming Soon</div><div class="hotel-desc">We're securing a room block nearby — check back soon for the group rate link.</div></div>
+    <div class="hotel-card"><div class="hotel-name">South Austin Hotels</div><div class="hotel-meta">Near the Wildflower Center</div><div class="hotel-desc">Look along South Congress or near Slaughter Lane for the easiest access to the venue.</div></div>
+    <div class="hotel-card"><div class="hotel-name">Downtown Austin</div><div class="hotel-meta">~20 min from venue</div><div class="hotel-desc">Loads of hotel and Airbnb options if you want to be in the heart of Austin.</div></div>
+  </div>
+  <div class="travel-note"><strong>Flying In?</strong> Austin-Bergstrom International Airport (AUS) is your closest airport. Rideshares are widely available. Book early — Austin fills up fast on spring weekends!</div>
+</section>
+
+<!-- FAQ -->
+<div class="divider"></div>
+<section id="faq">
+  <p class="section-label">Questions</p>
+  <h2 class="section-title">FAQ</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      What's the dress code?
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-a">Bright and bold! We're celebrating in full color — wear your most vibrant outfit and favorite patterns. Think florals, prints, and anything that makes you feel festive.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Is there parking at the Wildflower Center?
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-a">Yes! Free parking is available on site at the Lady Bird Johnson Wildflower Center. Rideshares are also a great option if you plan to celebrate with a drink or two.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      What's the weather like in Austin in May?
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-a">May in Austin is warm and gorgeous — expect highs around 85°F during the day and comfortable evenings around 65–70°F. The ceremony and reception are outdoors, so light layers for the evening aren't a bad idea. And yes, there's always a small chance of a Texas spring shower!</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      When should I RSVP by?
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-a">Please RSVP by February 1, 2027 so we can get final counts to our vendors. If something comes up after that, reach out to us directly by text or at madeline.g14@gmail.com.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      I have a dietary restriction — will there be options for me?
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-a">Absolutely! Please note any dietary restrictions or allergies in your RSVP and we'll make sure you're taken care of. When in doubt, reach out to us directly.</div>
+  </div>
+
+</section>
+
+<!-- REGISTRY -->
+<div class="divider"></div>
+<section id="registry">
+  <p class="section-label">Registry</p>
+  <h2 class="section-title">Gifts</h2>
+  <p class="registry-placeholder-note">Your registry links will go here — add them when you're ready and replace the placeholder cards below.</p>
+  <div class="registry-cards">
+    <a class="registry-card" href="#" onclick="return false">
+      <div class="registry-card-name">Registry One</div>
+      <div class="registry-card-desc">Coming soon</div>
+    </a>
+    <a class="registry-card" href="#" onclick="return false">
+      <div class="registry-card-name">Registry Two</div>
+      <div class="registry-card-desc">Coming soon</div>
+    </a>
+    <a class="registry-card" href="#" onclick="return false">
+      <div class="registry-card-name">Registry Three</div>
+      <div class="registry-card-desc">Coming soon</div>
+    </a>
+  </div>
+</section>
+
+<!-- ADMIN -->
+<div id="admin">
+  <div class="inner">
+    <p class="section-label">Admin Only</p>
+    <h2 class="section-title">Guest List Manager</h2>
+    <div style="margin-bottom:2rem">
+      <label style="font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:.6rem">Google Apps Script URL</label>
+      <div class="script-row">
+        <input class="admin-input" type="text" id="script-url-input" placeholder="https://script.google.com/macros/s/.../exec" onkeydown="if(event.key==='Enter')saveScriptUrl()" />
+        <button class="btn-outline" onclick="saveScriptUrl()">Save &amp; Connect</button>
+      </div>
+      <div class="sync-status" id="script-status"></div>
+    </div>
+    <div class="upload-zone" id="upload-zone">
+      <input type="file" id="csv-input" accept=".csv" style="display:none" onchange="handleCSV(event)" />
+      <div class="upload-zone-icon">📋</div>
+      <div class="upload-zone-text">
+        <strong>Upload / Replace Guest List CSV</strong>
+        Click to choose or drag &amp; drop
+      </div>
+    </div>
+    <div class="csv-hint">
+      One row per invitation. Columns: <code>invitation_id</code>, <code>guest_names</code>, <code>open_plus_one</code><br>
+      <code>guest_names</code> — pipe-separated: <code>Jack Goulet|Mary Grace Carter</code><br>
+      <code>open_plus_one</code> — <code>yes</code> or <code>no</code>
+    </div>
+    <div class="admin-stats" id="admin-stats">
+      <div class="stat-box"><div class="stat-num" id="s-invited">—</div><div class="stat-label">Invited</div></div>
+      <div class="stat-box"><div class="stat-num" id="s-responded" style="color:var(--green)">—</div><div class="stat-label">RSVPd</div></div>
+      <div class="stat-box"><div class="stat-num" id="s-wed-yes" style="color:var(--teal)">—</div><div class="stat-label">Wedding ✓</div></div>
+      <div class="stat-box"><div class="stat-num" id="s-wel-yes" style="color:var(--pink)">—</div><div class="stat-label">Welcome ✓</div></div>
+      <div class="stat-box"><div class="stat-num" id="s-pending" style="color:var(--yellow)">—</div><div class="stat-label">Pending</div></div>
+    </div>
+    <div id="admin-controls">
+      <div class="sync-status" id="sync-status"></div>
+      <input class="search-bar" type="text" id="admin-search" placeholder="Search guests…" oninput="renderTable()" />
+      <div class="admin-actions">
+        <button class="btn-outline active" onclick="setFilter('all',this)">All</button>
+        <button class="btn-outline" onclick="setFilter('wed-yes',this)">Wedding ✓</button>
+        <button class="btn-outline" onclick="setFilter('wed-no',this)">Wedding ✗</button>
+        <button class="btn-outline" onclick="setFilter('pending',this)">Pending</button>
+        <button class="btn-outline" onclick="refreshFromSheet()" style="margin-left:auto">↻ Refresh</button>
+        <button class="btn-outline" onclick="exportCSV()">⬇ Export</button>
+      </div>
+      <div class="gtw">
+        <table>
+          <thead><tr>
+            <th>Guest</th><th>Invitation</th><th>Role</th>
+            <th>Wedding</th><th>Welcome Party</th><th>Email</th><th>Notes</th>
+          </tr></thead>
+          <tbody id="admin-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-names">Madeline &amp; Jake</div>
+  <div class="footer-date">May 1, 2027 · Austin, Texas</div>
+  <button class="fun-btn" onclick="openPong()">click me for fun</button>
+  <div class="color-bar"></div>
+</footer>
+
+<!-- PONG MODAL -->
+<div id="pong-modal">
+  <div class="pong-inner">
+    <button class="pong-close" onclick="closePong()">✕</button>
+    <div id="pong-picker">
+      <div style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:.5rem">Mini Game</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--cream);margin-bottom:1.5rem">Pong</div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <button onclick="startPong('cpu')" style="font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:var(--coral);color:white;border:none;padding:.9rem 1.8rem;cursor:pointer;flex:1">vs Computer</button>
+        <button onclick="startPong('2p')" style="font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;background:var(--teal);color:white;border:none;padding:.9rem 1.8rem;cursor:pointer;flex:1">vs Friend</button>
+      </div>
+      <div style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;color:#555;margin-top:1.2rem;line-height:1.8">
+        vs Computer: W / S to move &nbsp;·&nbsp; vs Friend: W / S and ↑ / ↓
+      </div>
+    </div>
+    <div id="pong-game" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem">
+        <div style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#555" id="pong-mode-label"></div>
+        <button onclick="resetPong()" style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid #444;color:#666;padding:.3rem .8rem;cursor:pointer;transition:all .2s" onmouseover="this.style.color='var(--coral)';this.style.borderColor='var(--coral)'" onmouseout="this.style.color='#666';this.style.borderColor='#444'">← back</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:.5rem">
+        <div style="font-family:'DM Mono',monospace;font-size:1.5rem;color:var(--coral)" id="score-left">0</div>
+        <div style="font-family:'DM Mono',monospace;font-size:1.5rem;color:var(--teal)" id="score-right">0</div>
+      </div>
+      <canvas id="pong-canvas" style="display:block;width:100%;border:1px solid #2a2a2a"></canvas>
+      <div id="pong-msg" style="font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);text-align:center;margin-top:.8rem;min-height:1.2em"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── CANVAS POLYFILL ─────────────────────────────────────────────
+if (!CanvasRenderingContext2D.prototype.roundRect) {
+  CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+    r = Math.min(r, w/2, h/2);
+    this.beginPath();
+    this.moveTo(x+r, y);
+    this.arcTo(x+w, y, x+w, y+h, r);
+    this.arcTo(x+w, y+h, x, y+h, r);
+    this.arcTo(x, y+h, x, y, r);
+    this.arcTo(x, y, x+w, y, r);
+    this.closePath();
+  };
+}
+
+// ─── CONFIG ──────────────────────────────────────────────────────
+const ADMIN_SECRET = 'sunshine42';
+
+// ─── CAL DROPDOWN ────────────────────────────────────────────────
+function toggleCalDropdown(id, btn) {
+  const drop = document.getElementById(id);
+  const isOpen = drop.classList.contains('open');
+  closeCalDropdowns();
+  if (!isOpen) drop.classList.add('open');
+}
+function closeCalDropdowns() {
+  document.querySelectorAll('.cal-dropdown').forEach(d => d.classList.remove('open'));
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.ev-day-cal')) closeCalDropdowns();
+});
+
+// ─── CALENDAR ────────────────────────────────────────────────────
+const CAL_EVENTS = {
+  dance: {
+    title: 'Madeline & Jake — Two-Stepping at Broken Spoke',
+    start: '20270429T193000',
+    end:   '20270429T220000',
+    loc:   '3201 S Lamar Blvd, Austin, TX 78704',
+    desc:  'Dance hall opens at 7:15 PM, lessons 8–9 PM. $10 cover, cash only. Come warm up your boots!'
+  },
+  welcome: {
+    title: 'Madeline & Jake — Welcome Party',
+    start: '20270430T200000',
+    end:   '20270430T220000',
+    loc:   '2203 Hancock Dr, Austin, TX 78756',
+    desc:  'Welcome party for Madeline and Jake\'s wedding weekend!'
+  },
+  wedding: {
+    title: 'Madeline & Jake — Wedding',
+    start: '20270501T173000',
+    end:   '20270501T230000',
+    loc:   '4801 La Crosse Ave, Austin, TX 78739',
+    desc:  'The wedding of Madeline and Jake at the Lady Bird Johnson Wildflower Center.'
+  },
+  swim: {
+    title: 'Madeline & Jake — Barton Springs Pool Hangout',
+    start: '20270502T150000',
+    end:   '20270502T180000',
+    loc:   '2131 William Barton Dr, Austin, TX 78746',
+    desc:  'Post-wedding hillside hangout at Barton Springs Pool. Small entrance fee.'
+  }
+};
+
+function addToCalendar(type, event) {
+  const e = CAL_EVENTS[event];
+  if (type === 'google') {
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(e.title)}&dates=${e.start}/${e.end}&details=${encodeURIComponent(e.desc)}&location=${encodeURIComponent(e.loc)}`;
+    window.open(url, '_blank');
+  } else {
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT',
+      `DTSTART:${e.start}`,`DTEND:${e.end}`,
+      `SUMMARY:${e.title}`,`DESCRIPTION:${e.desc}`,
+      `LOCATION:${e.loc}`,'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    const a = document.createElement('a');
+    a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+    a.download = event + '.ics';
+    a.click();
+  }
+}
+
+// ─── FAQ ─────────────────────────────────────────────────────────
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+// ─── EASTER EGG: GRAYSCALE ───────────────────────────────────────
+function triggerGrayscale() {
+  document.body.classList.add('grayscale');
+  setTimeout(() => document.body.classList.remove('grayscale'), 1800);
+}
+
+// ─── PONG ────────────────────────────────────────────────────────
+const PONG = { W:520,H:320,PAD_W:10,PAD_H:70,BALL:8,PAD_SPEED:5,BALL_SPEED:4,WIN:7 };
+let pong = null;
+
+function openPong()  { document.getElementById('pong-modal').style.display='flex'; }
+function closePong() { document.getElementById('pong-modal').style.display='none'; stopPong(); }
+function resetPong() {
+  stopPong();
+  document.getElementById('pong-game').style.display='none';
+  document.getElementById('pong-picker').style.display='block';
+}
+
+function startPong(mode) {
+  document.getElementById('pong-picker').style.display='none';
+  document.getElementById('pong-game').style.display='block';
+  document.getElementById('pong-mode-label').textContent=mode==='cpu'?'vs Computer':'vs Friend';
+  document.getElementById('score-left').textContent='0';
+  document.getElementById('score-right').textContent='0';
+  document.getElementById('pong-msg').textContent='';
+  const cvs=document.getElementById('pong-canvas');
+  cvs.width=PONG.W;cvs.height=PONG.H;
+  const ctx=cvs.getContext('2d');
+  pong={mode,ctx,cvs,
+    ball:{x:PONG.W/2,y:PONG.H/2,vx:PONG.BALL_SPEED*(Math.random()>.5?1:-1),vy:PONG.BALL_SPEED*(Math.random()>.5?.6:-.6)},
+    left:{y:PONG.H/2-PONG.PAD_H/2,score:0},
+    right:{y:PONG.H/2-PONG.PAD_H/2,score:0},
+    keys:{},running:true};
+  const onKey=e=>{pong&&(pong.keys[e.code]=e.type==='keydown');};
+  document.addEventListener('keydown',onKey);document.addEventListener('keyup',onKey);
+  pong.removeKeys=()=>{document.removeEventListener('keydown',onKey);document.removeEventListener('keyup',onKey);};
+  let touchY=null;
+  cvs.addEventListener('touchstart',e=>{touchY=e.touches[0].clientY;e.preventDefault();},{passive:false});
+  cvs.addEventListener('touchmove',e=>{if(!pong||touchY===null)return;const dy=e.touches[0].clientY-touchY;pong.left.y=Math.max(0,Math.min(PONG.H-PONG.PAD_H,pong.left.y+dy*.4));touchY=e.touches[0].clientY;e.preventDefault();},{passive:false});
+  pong.frame=requestAnimationFrame(function loop(){if(!pong||!pong.running)return;updatePong();drawPong();pong.frame=requestAnimationFrame(loop);});
+}
+
+function stopPong(){if(!pong)return;pong.running=false;cancelAnimationFrame(pong.frame);pong.removeKeys&&pong.removeKeys();pong=null;}
+
+function updatePong(){
+  const p=pong,P=PONG;
+  if(p.keys['KeyW'])p.left.y=Math.max(0,p.left.y-P.PAD_SPEED);
+  if(p.keys['KeyS'])p.left.y=Math.min(P.H-P.PAD_H,p.left.y+P.PAD_SPEED);
+  if(p.mode==='2p'){
+    if(p.keys['ArrowUp'])p.right.y=Math.max(0,p.right.y-P.PAD_SPEED);
+    if(p.keys['ArrowDown'])p.right.y=Math.min(P.H-P.PAD_H,p.right.y+P.PAD_SPEED);
+  } else {
+    const c=p.right.y+P.PAD_H/2,sp=P.PAD_SPEED*.78;
+    if(c<p.ball.y-8)p.right.y=Math.min(P.H-P.PAD_H,p.right.y+sp);
+    else if(c>p.ball.y+8)p.right.y=Math.max(0,p.right.y-sp);
+  }
+  p.ball.x+=p.ball.vx;p.ball.y+=p.ball.vy;
+  if(p.ball.y-P.BALL<0){p.ball.y=P.BALL;p.ball.vy*=-1;}
+  if(p.ball.y+P.BALL>P.H){p.ball.y=P.H-P.BALL;p.ball.vy*=-1;}
+  if(p.ball.x-P.BALL<P.PAD_W+8&&p.ball.x-P.BALL>4&&p.ball.y>p.left.y&&p.ball.y<p.left.y+P.PAD_H){
+    p.ball.vx=Math.abs(p.ball.vx)*1.05;const rel=(p.ball.y-(p.left.y+P.PAD_H/2))/(P.PAD_H/2);p.ball.vy=rel*P.BALL_SPEED*1.2;}
+  if(p.ball.x+P.BALL>P.W-P.PAD_W-8&&p.ball.x+P.BALL<P.W-4&&p.ball.y>p.right.y&&p.ball.y<p.right.y+P.PAD_H){
+    p.ball.vx=-Math.abs(p.ball.vx)*1.05;const rel=(p.ball.y-(p.right.y+P.PAD_H/2))/(P.PAD_H/2);p.ball.vy=rel*P.BALL_SPEED*1.2;}
+  const spd=Math.sqrt(p.ball.vx**2+p.ball.vy**2);
+  if(spd>12){p.ball.vx=p.ball.vx/spd*12;p.ball.vy=p.ball.vy/spd*12;}
+  if(p.ball.x<0){p.right.score++;document.getElementById('score-right').textContent=p.right.score;checkWin()||resetBall(-1);}
+  if(p.ball.x>P.W){p.left.score++;document.getElementById('score-left').textContent=p.left.score;checkWin()||resetBall(1);}
+}
+
+function resetBall(dir){pong.ball={x:PONG.W/2,y:PONG.H/2,vx:PONG.BALL_SPEED*dir,vy:PONG.BALL_SPEED*(Math.random()>.5?.6:-.6)};}
+
+function checkWin(){
+  const p=pong;
+  if(p.left.score>=PONG.WIN||p.right.score>=PONG.WIN){
+    p.running=false;cancelAnimationFrame(p.frame);drawPong();
+    const lw=p.left.score>=PONG.WIN;
+    const msg=p.mode==='cpu'?(lw?'🎉 You win!':'Computer wins!'):(lw?'🎉 Left player wins!':'🎉 Right player wins!');
+    const el=document.getElementById('pong-msg');el.textContent=msg+'  ';
+    const btn=document.createElement('button');
+    btn.textContent='Play again';
+    btn.style.cssText="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;background:var(--coral);color:white;border:none;padding:.5rem 1.2rem;cursor:pointer";
+    btn.onclick=()=>{btn.remove();el.textContent='';startPong(p.mode);};
+    el.appendChild(btn);return true;
+  }return false;
+}
+
+function drawPong(){
+  const p=pong,P=PONG,ctx=p.ctx;
+  ctx.fillStyle='#0f0f0f';ctx.fillRect(0,0,P.W,P.H);
+  ctx.setLineDash([6,8]);ctx.strokeStyle='#2a2a2a';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(P.W/2,0);ctx.lineTo(P.W/2,P.H);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle='#ff5f3f';ctx.beginPath();ctx.roundRect(4,p.left.y,P.PAD_W,P.PAD_H,3);ctx.fill();
+  ctx.fillStyle='#2ec4b6';ctx.beginPath();ctx.roundRect(P.W-P.PAD_W-4,p.right.y,P.PAD_W,P.PAD_H,3);ctx.fill();
+  drawFlower(ctx,p.ball.x,p.ball.y,P.BALL,'#f7d94c');
+}
+
+function drawFlower(ctx,x,y,r,color){
+  ctx.fillStyle=color;
+  for(let i=0;i<5;i++){const a=(Math.PI*2/5)*i;ctx.beginPath();ctx.ellipse(x+Math.cos(a)*r*.7,y+Math.sin(a)*r*.7,r*.55,r*.28,a,0,Math.PI*2);ctx.fill();}
+  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x,y,r*.32,0,Math.PI*2);ctx.fill();
+}
+
+// ─── UTILS ───────────────────────────────────────────────────────
+const norm = s => (s||'').toLowerCase().trim().replace(/\s+/g,' ');
+const fmtNames = names => {
+  if(names.length===1)return names[0];
+  if(names.length===2)return names[0]+' & '+names[1];
+  return names.slice(0,-1).join(', ')+' & '+names[names.length-1];
+};
+
+// ─── APPS SCRIPT ─────────────────────────────────────────────────
+let scriptUrl = localStorage.getItem('mjScriptUrl') || 'https://script.google.com/macros/s/AKfycby19ooGqbZKU-4C_AdW0_ujxRJ53TGhxqxL9JfzZTFbCui0lt_gTGzuXeMmscjEP-SN_w/exec';
+let invitations=[], currentInv=null, isEditing=false, activeFilter='all', isAdmin=false;
+let personStates=[], plusOnePersonState=null;
+
+async function apsFetch(payload){
+  if(!scriptUrl)return null;
+  const res=await fetch(scriptUrl+'?nc='+Date.now(),{method:'POST',body:JSON.stringify(payload),headers:{'Content-Type':'text/plain'}});
+  return res.json();
+}
+
+// ─── INIT ────────────────────────────────────────────────────────
+(function init(){
+  const p=new URLSearchParams(window.location.search);
+  isAdmin=p.get('admin')===ADMIN_SECRET;
+  if(isAdmin){
+    document.getElementById('admin').style.display='block';
+    document.getElementById('admin-nav-link').style.display='inline';
+    document.getElementById('admin-stats').style.display='grid';
+    document.getElementById('admin-controls').style.display='block';
+    if(scriptUrl){document.getElementById('script-url-input').value=scriptUrl;refreshFromSheet();}
+    const zone=document.getElementById('upload-zone');
+    zone.addEventListener('click',()=>document.getElementById('csv-input').click());
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.style.borderColor='var(--yellow)';});
+    zone.addEventListener('dragleave',()=>{zone.style.borderColor='';});
+    zone.addEventListener('drop',e=>{e.preventDefault();zone.style.borderColor='';const f=e.dataTransfer.files[0];if(f){const r=new FileReader();r.onload=ev=>parseAndUpload(ev.target.result);r.readAsText(f);}});
+  }
+  if(scriptUrl)fetchInvitationsForRSVP();
+})();
+
+function saveScriptUrl(){
+  const v=document.getElementById('script-url-input').value.trim();
+  if(!v.startsWith('https://script.google.com')){setScriptSt('That doesn\'t look like a valid Apps Script URL.');return;}
+  scriptUrl=v;localStorage.setItem('mjScriptUrl',scriptUrl);setScriptSt('Connecting…');refreshFromSheet();
+}
+
+async function refreshFromSheet(){
+  setSyncSt('↻ Loading from Google Sheets…');
+  try{const d=await apsFetch({action:'getInvitations'});if(!d||d.error){setSyncSt('⚠ '+(d?.error||'Could not load'));return;}
+  invitations=d.invitations||[];updateStats();renderTable();setSyncSt('✓ Synced · '+new Date().toLocaleTimeString(),true);setScriptSt('✓ Connected',true);}
+  catch(e){setSyncSt('⚠ Connection failed — check your URL');}
+}
+
+async function fetchInvitationsForRSVP(){
+  try{const d=await apsFetch({action:'getInvitations'});if(d&&d.invitations)invitations=d.invitations;}catch(e){}
+}
+
+function setScriptSt(msg,ok){const el=document.getElementById('script-status');if(!el)return;el.textContent=msg;el.style.color=ok?'var(--green)':'rgba(255,255,255,.4)';}
+function setSyncSt(msg,ok){const el=document.getElementById('sync-status');if(!el)return;el.textContent=msg;el.style.color=ok?'var(--green)':'rgba(255,255,255,.4)';}
+
+function handleCSV(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>parseAndUpload(ev.target.result);r.readAsText(f);}
+
+function parseAndUpload(text){
+  const lines=text.trim().split('\n').filter(l=>l.trim());
+  const start=lines[0].toLowerCase().includes('invitation')||lines[0].toLowerCase().includes('guest')?1:0;
+  const parsed=[];
+  for(let i=start;i<lines.length;i++){
+    const cols=lines[i].split(',').map(c=>c.trim());if(cols.length<2)continue;
+    const[id,namesRaw,openRaw]=cols;if(!id||!namesRaw)continue;
+    const names=namesRaw.split('|').map(n=>n.trim()).filter(Boolean);
+    const openPlusOne=(openRaw||'').toLowerCase()==='yes';
+    const ex=invitations.find(inv=>inv.id===id);
+    parsed.push({id,names,openPlusOne,responded:ex?.responded||false,guests:ex?.guests||[],email:ex?.email||''});
+  }
+  invitations=parsed;updateStats();renderTable();
+  if(!scriptUrl){setSyncSt('⚠ Loaded locally — add your Apps Script URL to sync.');return;}
+  setSyncSt('⏳ Uploading to Google Sheets…');
+  apsFetch({action:'setInvitations',invitations}).then(r=>{
+    if(r?.ok)setSyncSt('✓ Saved to Google Sheets · '+new Date().toLocaleTimeString(),true);
+    else setSyncSt('⚠ Upload failed: '+(r?.error||'unknown'));
+  }).catch(()=>setSyncSt('⚠ Could not reach Google Sheets.'));
+}
+
+function updateStats(){
+  let invited=0,responded=0,wedYes=0,welYes=0,pending=0;
+  invitations.forEach(inv=>{invited+=inv.names.length;if(inv.responded){responded++;inv.guests.forEach(g=>{if(g.wedding==='yes')wedYes++;if(g.welcome==='yes')welYes++;});}else pending++;});
+  document.getElementById('s-invited').textContent=invited+'+';
+  document.getElementById('s-responded').textContent=responded;
+  document.getElementById('s-wed-yes').textContent=wedYes;
+  document.getElementById('s-wel-yes').textContent=welYes;
+  document.getElementById('s-pending').textContent=pending;
+}
+
+function setFilter(f,btn){activeFilter=f;document.querySelectorAll('.admin-actions .btn-outline').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderTable();}
+
+function renderTable(){
+  const q=norm(document.getElementById('admin-search')?.value||'');
+  const tbody=document.getElementById('admin-tbody');if(!tbody)return;
+  let rows='';
+  invitations.forEach(inv=>{
+    if(q&&!inv.names.some(n=>norm(n).includes(q))&&!inv.guests.some(g=>norm(g.name).includes(q)))return;
+    if(activeFilter==='wed-yes'&&(!inv.responded||!inv.guests.some(g=>g.wedding==='yes')))return;
+    if(activeFilter==='wed-no'&&(!inv.responded||inv.guests.some(g=>g.wedding==='yes')))return;
+    if(activeFilter==='pending'&&inv.responded)return;
+    rows+=`<tr class="inv-row"><td colspan="7">Invitation ${inv.id}${inv.openPlusOne?' · open +1':''}</td></tr>`;
+    if(!inv.responded){inv.names.forEach(n=>{rows+=`<tr><td>${n}</td><td style="color:rgba(255,255,255,.3)">${inv.id}</td><td><span class="badge b-pend">named</span></td><td><span class="badge b-pend">Pending</span></td><td><span class="badge b-pend">Pending</span></td><td>—</td><td>—</td></tr>`;});}
+    else{inv.guests.forEach((g,gi)=>{
+      const wb=g.wedding==='yes'?`<span class="badge b-yes">Attending</span>`:`<span class="badge b-dec">Declined</span>`;
+      const wl=g.welcome==='yes'?`<span class="badge b-yes">Yes</span>`:g.welcome==='no'?`<span class="badge b-no">No</span>`:`<span class="badge b-pend">—</span>`;
+      const rb=g.role==='plus_one'?`<span class="badge b-pend">+1</span>`:g.role==='primary'?`<span class="badge" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)">primary</span>`:`<span class="badge b-no">named</span>`;
+      rows+=`<tr><td>${g.name}</td><td style="color:rgba(255,255,255,.3);font-size:.8rem">${inv.id}</td><td>${rb}</td><td>${wb}</td><td>${wl}</td><td style="color:rgba(255,255,255,.45);font-size:.82rem">${gi===0?(inv.email||'—'):''}</td><td style="color:rgba(255,255,255,.45);font-style:italic;font-size:.85rem;max-width:160px">${gi===0?(g.notes||'—'):''}</td></tr>`;
+    });}
+  });
+  tbody.innerHTML=rows||`<tr><td colspan="7" style="text-align:center;color:rgba(255,255,255,.25);padding:2rem;font-style:italic">No guests found</td></tr>`;
+}
+
+function exportCSV(){
+  const rows=[['Invitation ID','Guest Name','Role','Wedding','Welcome Party','Email','Notes']];
+  invitations.forEach(inv=>{
+    if(inv.responded)inv.guests.forEach((g,gi)=>rows.push([inv.id,g.name,g.role,g.wedding,g.welcome,gi===0?(inv.email||''):'',gi===0?(g.notes||''):'']));
+    else{inv.names.forEach(n=>rows.push([inv.id,n,'named','pending','pending','','']));if(inv.openPlusOne)rows.push([inv.id,'(open +1)','plus_one','pending','pending','','']);}
+  });
+  const csv=rows.map(r=>r.map(c=>`"${c}"`).join(',')).join('\n');
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='madeline-jake-rsvps.csv';a.click();
+}
+
+// ─── RSVP FLOW ───────────────────────────────────────────────────
+async function doLookup(){
+  const raw=document.getElementById('lookup-input').value.trim();
+  if(!raw){showAlert('lookup-alert','error','Please enter your name.');return;}
+  const btn=document.getElementById('lookup-btn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Looking up…';
+  if(scriptUrl&&!invitations.length)await fetchInvitationsForRSVP();
+  btn.disabled=false;btn.textContent='Find My Invitation';
+  if(!invitations.length){showAlert('lookup-alert','error','RSVP isn\'t open quite yet — check back soon or email us at madeline.g14@gmail.com');return;}
+  const q=norm(raw);
+  const found=invitations.find(inv=>inv.names.some(n=>norm(n)===q||(norm(n).startsWith(q.split(' ')[0])&&norm(n).endsWith(q.split(' ').slice(-1)[0]))));
+  if(!found){showAlert('lookup-alert','error','We couldn\'t find that name on our guest list. Please double-check the spelling, or email us at madeline.g14@gmail.com');return;}
+  currentInv=found;isEditing=found.responded;buildForm(found);
+}
+
+function buildForm(inv){
+  document.getElementById('inv-names').textContent=fmtNames(inv.names);
+  document.getElementById('editing-badge').style.display=isEditing?'inline-block':'none';
+  personStates=inv.names.map((_,i)=>isEditing&&inv.guests[i]?{wedding:inv.guests[i].wedding,welcome:inv.guests[i].welcome}:{wedding:null,welcome:null});
+  plusOnePersonState=null;
+  document.getElementById('person-blocks').innerHTML=inv.names.map((name,i)=>personBlockHTML(name,i,i===0?'primary':'named')).join('');
+  if(isEditing)inv.names.forEach((_,i)=>{if(inv.guests[i]){applyToggleUI(`p${i}`,'wedding',inv.guests[i].wedding);applyToggleUI(`p${i}`,'welcome',inv.guests[i].welcome);}});
+  const poGuest=isEditing?inv.guests.find(g=>g.role==='plus_one'):null;
+  document.getElementById('plus-one-box').style.display=inv.openPlusOne?'block':'none';
+  document.getElementById('plus-one-name-input').value=poGuest?poGuest.name:'';
+  document.getElementById('plus-one-person-block').innerHTML='';
+  if(poGuest){document.getElementById('plus-one-person-block').innerHTML=personBlockHTML(poGuest.name,0,'plus_one',true);plusOnePersonState={wedding:poGuest.wedding,welcome:poGuest.welcome};applyToggleUI('po','wedding',poGuest.wedding);applyToggleUI('po','welcome',poGuest.welcome);}
+  document.getElementById('notes-input').value=isEditing?(inv.guests.find(g=>g.role==='primary')?.notes||''):'';
+  document.getElementById('email-input').value=inv.email||'';
+  showStep('s-form');
+}
+
+function applyToggleUI(prefix,event,val){
+  if(!val)return;
+  const k=event==='wedding'?'wed':'wel';
+  const yEl=document.getElementById(`${prefix}-${k}-yes`);
+  const nEl=document.getElementById(`${prefix}-${k}-no`);
+  if(yEl)yEl.className='event-toggle'+(val==='yes'?' selected-yes':'');
+  if(nEl)nEl.className='event-toggle'+(val==='no'?' selected-no':'');
+}
+
+function personBlockHTML(name,idx,role,isPlusOne=false){
+  const prefix=isPlusOne?'po':`p${idx}`;
+  return `<div class="person-block" id="block-${prefix}">
+    <div class="person-header"><span>${name}</span></div>
+    <div class="person-body">
+      <div class="person-events">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:.5rem">Wedding · May 1</div>
+          <div style="display:flex;gap:.5rem">
+            <div class="event-toggle" id="${prefix}-wed-yes" onclick="setToggle('${prefix}','wedding','yes')"><span class="ev-label">Attending</span><span class="ev-answer">✓ Yes</span></div>
+            <div class="event-toggle" id="${prefix}-wed-no" onclick="setToggle('${prefix}','wedding','no')"><span class="ev-label">Not attending</span><span class="ev-answer">✗ No</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:.5rem">Welcome Party · Apr 30</div>
+          <div style="display:flex;gap:.5rem">
+            <div class="event-toggle" id="${prefix}-wel-yes" onclick="setToggle('${prefix}','welcome','yes')"><span class="ev-label">Attending</span><span class="ev-answer">✓ Yes</span></div>
+            <div class="event-toggle" id="${prefix}-wel-no" onclick="setToggle('${prefix}','welcome','no')"><span class="ev-label">Not attending</span><span class="ev-answer">✗ No</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function setToggle(prefix,event,val){
+  applyToggleUI(prefix,event,val);
+  if(prefix==='po'){if(!plusOnePersonState)plusOnePersonState={wedding:null,welcome:null};plusOnePersonState[event]=val;}
+  else{const idx=parseInt(prefix.slice(1));personStates[idx][event]=val;}
+}
+
+function onPlusOneNameChange(){
+  const name=document.getElementById('plus-one-name-input').value.trim();
+  const container=document.getElementById('plus-one-person-block');
+  if(name.length>1){if(!container.innerHTML){container.innerHTML=personBlockHTML(name,0,'plus_one',true);plusOnePersonState={wedding:null,welcome:null};}else{const h=container.querySelector('.person-header span');if(h)h.textContent=name;}}
+  else{container.innerHTML='';plusOnePersonState=null;}
+}
+
+async function doSubmit(){
+  for(let i=0;i<personStates.length;i++){
+    const name=currentInv.names[i];
+    if(!personStates[i].wedding){showAlert('form-alert','error',`Please select wedding attendance for ${name}.`);return;}
+    if(!personStates[i].welcome){showAlert('form-alert','error',`Please select welcome party attendance for ${name}.`);return;}
+  }
+  if(plusOnePersonState!==null){
+    const poName=document.getElementById('plus-one-name-input').value.trim();
+    if(!poName){showAlert('form-alert','error','Please enter your guest\'s name, or leave the +1 field blank.');return;}
+    if(!plusOnePersonState.wedding){showAlert('form-alert','error',`Please select wedding attendance for ${poName}.`);return;}
+    if(!plusOnePersonState.welcome){showAlert('form-alert','error',`Please select welcome party attendance for ${poName}.`);return;}
+  }
+  const email=document.getElementById('email-input').value.trim();
+  if(!email||!email.includes('@')){showAlert('form-alert','error','Please enter a valid email address so we can reach you if anything changes.');return;}
+  const notes=document.getElementById('notes-input').value.trim();
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.innerHTML='<span class="spinner"></span>Saving…';
+  const guests=currentInv.names.map((name,i)=>({name,role:i===0?'primary':'named',wedding:personStates[i].wedding,welcome:personStates[i].welcome,notes:i===0?notes:''}));
+  if(plusOnePersonState)guests.push({name:document.getElementById('plus-one-name-input').value.trim(),role:'plus_one',wedding:plusOnePersonState.wedding,welcome:plusOnePersonState.welcome,notes:''});
+  currentInv.responded=true;currentInv.guests=guests;currentInv.email=email;
+  if(scriptUrl){try{await apsFetch({action:'saveRsvp',invitationId:currentInv.id,guests,notes,email});}catch(e){}}
+  if(isAdmin){updateStats();renderTable();}
+  showStep(guests.some(g=>g.wedding==='yes')?'s-success-yes':'s-success-no');
+  btn.disabled=false;btn.textContent='Send RSVP';
+}
+
+function doReset(){currentInv=null;isEditing=false;personStates=[];plusOnePersonState=null;document.getElementById('lookup-input').value='';document.getElementById('lookup-alert').innerHTML='';document.getElementById('form-alert').innerHTML='';showStep('s-lookup');}
+function showStep(id){document.querySelectorAll('.rsvp-step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+
+function showAlert(containerId, type, msg) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = `<div class="alert alert-${type === 'error' ? 'error' : 'info'}">${msg}</div>`;
+}
+</script>
+</body>
+</html>
