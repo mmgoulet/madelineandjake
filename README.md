@@ -1,2 +1,0 @@
-# madelineandjake
-Our wedding website
